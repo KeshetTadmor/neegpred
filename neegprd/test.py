@@ -38,9 +38,10 @@ def test_liking_dis(df, l_tresh=2, h_tresh=5):
         liking_list.append(float(liking[index]))
     high_tresh = 'liking > ' + str(h_tresh)
     low_tresh = 'liking < ' + str(l_tresh)
-    print('number of liking above ' + str(h_tresh) +
+    print('number of liking above ' + str(h_tresh) + ': ' +
           str(len(df.query(high_tresh))))
-    print('number of liking below 2: ' + str(len(df.query(low_tresh))))
+    print('number of liking below ' + str(l_tresh) + ': ' + 
+          str(len(df.query(low_tresh))))
     fig, ax = plt.subplots()
     N, bins, patches = ax.hist(liking_list, bins=np.arange(
         0, 7, 0.1), edgecolor='white', linewidth=1)
