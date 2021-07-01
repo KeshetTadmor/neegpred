@@ -1,32 +1,55 @@
-class Time:
-    def __init__(self, hour=0, minute=0, second=0):
-        self.hour = hour
-        self.minute = minute
-        self.second = second
-        self.time_in_seconds = self.hour*3600 + self.minute*60 + self.second
-        if self.time_in_seconds > 86399:  # the number of seconds in 23:59:59
-            self.time_in_seconds = 0
-        self.hour = int(
-            (self.time_in_seconds - self.time_in_seconds % 3600) / 3600)
-        self.second = int(
-            (self.time_in_seconds - self.hour*3600) % 60)
-        self.minute = int(
-            (self.time_in_seconds-self.hour*3600 - self.second)/60)
-
-    def __str__(self):
-        print(str(self.hour)+':'+str(self.minute)+':'+str(self.second))
-
-    def is_after(self, time_point):
-        if self.time_in_seconds > time_point.time_in_seconds:
-            return True
-        else:
-            return False
+import numpy as np
+import pandas as pd
+import math
+from matplotlib import pyplot as plt
 
 
-t1 = Time(8, 23, 0)
-t2 = Time(7, 20, 40)
-t1.__str__()
-print(t1.is_after(t2))
+def test_negative_values(df, tag):
+    """
+    find rows in containg negative values.
 
-#print(t1.hour, t1.minute, t1.second)
-#print(23*3600 + 59 * 60 + 59)
+    Parameters
+    ----------
+    df : data frame
+        data frame containing data from eeg experiment devided by trail.
+    tag: str
+        type of data frame: ad df or BDM df
+
+    """
+    utag = tag.upper()
+    if utag == 'AD':
+        columns_to_check = ['sub_id', 'ad_id',
+                            'label', 'repitition', 'item_id', 'liking']
+    elif utag == 'BDM':
+        columns_to_check = ['sub_id', 'label', 'repitition']
+    for column in columns_to_check:
+        query_str = column + ' < 0'
+        problematic_trails = df.query(query_str)
+    if len(problematic_trails) > 0:
+        raise Exception('some subjects contain negative values')
+    else:
+        print('the data does not contain negative values')
+
+
+def test_liking_dis(df):
+    liking = df.liking
+    liking_list = []
+    for index in range(0, len(liking)):
+        liking_list.append(float(liking[index]))
+    print('number of liking above 5: ' + str(len(df.query('liking > 5'))))
+    print('number of liking below 2: ' + str(len(df.query('liking < 2'))))
+    fig, ax = plt.subplots()
+    N, bins, patches = ax.hist(liking_list, bins=np.arange(
+        0, 7, 0.1), edgecolor='white', linewidth=1)
+    plt.title('distribution of liking scores')
+    plt.xlabel('liking score')
+    plt.ylabel('frequency')
+
+    for i in range(0, 20):
+        patches[i].set_facecolor('darkorange')
+    for i in range(20, 50):
+        patches[i].set_facecolor('gainsboro')
+    for i in range(50, len(patches)):
+        patches[i].set_facecolor('darkorange')
+
+    plt.show()
