@@ -12,9 +12,9 @@ setup(name='neegpred',
       license='GNU General Public License v3.0',
       long_description='This package is intended to be used by Prof. Dino Levy, It offers a platform to train\n'
                        'models that can predict the effect of a given commercial by EEG signal processing'
-                       'and Machine learning')
+                       'and Machine learning',
 
-      install_requires=['pandas','numpy','mat73','matplotlib','scipy','math','tqdm','seaborn','sklearn','shap','pytest'], 
+      install_requires=['pandas','numpy','mat73','matplotlib','scipy','math','tqdm','seaborn','sklearn','shap','pytest'],
   
 
       classifiers=[
