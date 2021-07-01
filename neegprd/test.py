@@ -32,6 +32,18 @@ def test_negative_values(df, tag):
 
 
 def test_liking_dis(df):
+    """
+    present the distribiution of liking score to see if the liking model is useful for the data
+    Parameters
+    ----------
+    df : data frame
+        data frame containing data from eeg experiment devided by trail.
+    return
+    ----------
+    plot the liking score
+    shows the number of extreme scores
+
+    """
     liking = df.liking
     liking_list = []
     for index in range(0, len(liking)):
