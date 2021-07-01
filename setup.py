@@ -15,11 +15,11 @@ setup(name='neegpred',
   
 
       classifiers=[
-        'Development Status :: 3 - Alpha',      # "3 - Alpha", "4 - Beta" or "5 - Production/Stable"
-        'Intended Audience :: researchers',      
-        'Topic :: data science :: EEG analysis',
+        'Development Status :: 3 - Alpha',
+        'Intended Audience :: Science/Research',
+        'Topic :: Scientific/Engineering :: Information Analysis',
         'License :: OSI Approved :: GNU General Public License v3.0',  
         'Programming Language :: Python :: 3',  
-        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.7',
         ],
 )
