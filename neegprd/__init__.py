@@ -17,3 +17,4 @@ from sklearn.pipeline import Pipeline
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.model_selection import GridSearchCV
 import shap
+import pytest
