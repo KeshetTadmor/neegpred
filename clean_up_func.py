@@ -95,34 +95,30 @@ def clean_data(df, tag):
     """
     cleans the dataframe:
         removes rows containing duplictes and NaN values.
-
+    
     Parameters
     ----------
     df : data frame
         data frame containing data from eeg experiment devided by trail.
     tag: str
         type of data frame: ad df or BDM df
-
+    
     Returns
     -------
     df
         clean dataframe where each row contains a trail.
     """
-    utag = tag.upper()
-    if utag == 'AD':
+    tag = tag.upper()
+    if tag == 'AD':
         nan_eeg_entries = hunt_eeg_nans(df)
-        liking_nans = hunt_column_nans(df, 'liking')
-        label_nans = hunt_column_nans(df, 'label')
+        liking_nans = hunt_column_nans(df,'liking')
+        label_nans = hunt_column_nans(df,'label')
         duplicate_rows = hunt_duplicates(df)
-        nans = np.concatenate(
-            (liking_nans, nan_eeg_entries, duplicate_rows, label_nans), axis=None)
-    elif utag == 'BDM':
-        label_nans = hunt_column_nans(df, 'label')
-        duplicate_rows = hunt_duplicates(df)
-        nans = np.concatenate(
-            (label_nans, duplicate_rows), axis=None)
-
+        nans = np.concatenate((liking_nans,nan_eeg_entries,duplicate_rows,label_nans),axis=None)
+    elif tag == 'BDM':
+        label_nans = hunt_column_nans(df,'label')
+        nans = np.concatenate((label_nans),axis=None)
+        
     nans_set = set(nans)
-    # Remove nan eeg and likings entries from dataframe
-    data = df.drop(nans_set)
+    data = df.drop(nans_set)     # Remove nan eeg and likings entries from dataframe
     return data
