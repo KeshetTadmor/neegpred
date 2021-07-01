@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7457b6f-a21a-4448-ba8c-e257c62e9fb1" name="Default Changelist" comment="" />
+    <list default="true" id="f7457b6f-a21a-4448-ba8c-e257c62e9fb1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/dist/neegpred-0.3.tar.gz" beforeDir="false" afterPath="$PROJECT_DIR$/dist/neegpred-0.3.tar.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,7 +57,7 @@
       <workItem from="1625137438560" duration="251000" />
       <workItem from="1625137838794" duration="17092000" />
       <workItem from="1625159524209" duration="69000" />
-      <workItem from="1625159792077" duration="856000" />
+      <workItem from="1625159792077" duration="979000" />
     </task>
     <servers />
   </component>
