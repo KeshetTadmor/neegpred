@@ -11,7 +11,7 @@ setup(name='neegpred',
       keywords = ['EEG', 'ML', 'neuro economy'],
       license='GNU General Public License v3.0',
 
-      install_requires=['pandas','numpy','mat73','matplotlib','scipy','math','tqdm','seaborn','sklearn','shap'], 
+      install_requires=['pandas','numpy','mat73','matplotlib','scipy','math','tqdm','seaborn','sklearn','shap','pytest'], 
   
 
       classifiers=[
