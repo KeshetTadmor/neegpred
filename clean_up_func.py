@@ -3,33 +3,6 @@ import pandas as pd
 import math
 
 
-def test_negative_values(df, tag):
-    """
-    find rows in containg negative values.
-
-    Parameters
-    ----------
-    df : data frame
-        data frame containing data from eeg experiment devided by trail.
-    tag: str
-        type of data frame: ad df or BDM df
-
-    """
-    utag = tag.upper()
-    if utag == 'AD':
-        columns_to_check = ['sub_id', 'ad_id',
-                            'label', 'repitition', 'item_id', 'liking']
-    elif utag == 'BDM':
-        columns_to_check = ['sub_id', 'label', 'repitition']
-    for column in columns_to_check:
-        query_str = column + ' < 0'
-        problematic_trails = df.query(query_str)
-    if len(problematic_trails) > 0:
-        raise Exception('some subjects contain negative values')
-    else:
-        print('the data does not contain negative values')
-
-        
 def hunt_eeg_nans(df):
     """
     find rows in which there are NaN eeg values.
