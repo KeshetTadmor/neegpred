@@ -14,7 +14,6 @@ setup(name='neegpred',
                        'models that can predict the effect of a given commercial by EEG signal processing'
                        'and Machine learning',
 
-      install_requires=['pandas','numpy','mat73','matplotlib','scipy','math','tqdm','seaborn','sklearn','shap','pytest'],
   
 
       classifiers=[
