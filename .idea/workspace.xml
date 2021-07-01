@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7457b6f-a21a-4448-ba8c-e257c62e9fb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Exploratory_Data_Analysis_pyhack2021-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Exploratory_Data_Analysis_pyhack2021-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exploratory_Data_Analysis_pyhack2021.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Exploratory_Data_Analysis_pyhack2021.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Keshet.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Keshet.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/neegpred-0.1.tar.gz" beforeDir="false" afterPath="$PROJECT_DIR$/dist/neegpred-0.1.tar.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +56,8 @@
       <workItem from="1625137205682" duration="3000" />
       <workItem from="1625137248263" duration="79000" />
       <workItem from="1625137438560" duration="251000" />
-      <workItem from="1625137838794" duration="17050000" />
+      <workItem from="1625137838794" duration="17092000" />
+      <workItem from="1625159524209" duration="69000" />
     </task>
     <servers />
   </component>
