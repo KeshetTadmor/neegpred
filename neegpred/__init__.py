@@ -13,9 +13,7 @@ from sklearn.linear_model import LogisticRegressionCV
 from sklearn import metrics
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import GroupKFold
-from sklearn.pipeline import Pipeline
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.model_selection import GridSearchCV
-import shap
 import pytest
 import pathlib
