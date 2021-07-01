@@ -28,3 +28,6 @@ AllEEG(<index>).AdEEG: In this field you will find another struct variable neste
 7.	*Label*: The value given to the product on that trial, from 0 to 100.
 8.	*Liking*: The value given to the commercial that appeared on that trial, from 0 to 7.
 9.	*nArtifacts*: the number of faulty electrodes found in the trial, by an automatic artifact detection pipeline. 
+  
+## experimental procedure
+  ![Picture1](https://user-images.githubusercontent.com/80317440/124106824-480c7b00-da6d-11eb-832d-0b56e25033b1.png)
