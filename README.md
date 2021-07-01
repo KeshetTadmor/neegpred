@@ -33,10 +33,14 @@ AllEEG(<index>).AdEEG: In this field you will find another struct variable neste
 8.	*Liking*: The value given to the commercial that appeared on that trial, from 0 to 7.
 9.	*nArtifacts*: the number of faulty electrodes found in the trial, by an automatic artifact detection pipeline. 
  
-## models description
+## Models Description
 neegpdr offers two modes of analysis via two different models:
   1. **Liking Model**: this model predicts whether or not a subject will like a certain commercial based on EEG recording.
   2. **Diff Model**: this model predicts how will watching a commercial effect the amount a subject is willing to pay for a specific item.
  
-## experimental procedure
+## Experimental Procedure
   ![Picture1](https://user-images.githubusercontent.com/80317440/124106824-480c7b00-da6d-11eb-832d-0b56e25033b1.png)
+ ## Electrode Locations
+ note: due to python indexing the electrode indexing starts at 0 in the pipeline
+ ![WhatsApp Image 2021-06-29 at 13 10 28](https://user-images.githubusercontent.com/80317440/124156816-be76a080-daa0-11eb-872a-7366ca720bd0.jpeg)
+
