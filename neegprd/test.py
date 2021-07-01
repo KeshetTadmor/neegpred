@@ -32,6 +32,19 @@ def test_negative_values(df, tag):
 
 
 def test_liking_dis(df, l_tresh=2, h_tresh=5):
+    """
+    find rows in containg negative values.
+
+    Parameters
+    ----------
+    df : data frame
+        data frame containing data from eeg experiment devided by trail.
+    l_tresh : float
+        the threshold defined as "does not like"
+    H_tresh : float
+        the threshold defined as "like"
+
+    """
     liking = df.liking
     liking_list = []
     for index in range(0, len(liking)):
