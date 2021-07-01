@@ -18,7 +18,7 @@ setup(name='neegpred',
         'Development Status :: 3 - Alpha',      # "3 - Alpha", "4 - Beta" or "5 - Production/Stable"
         'Intended Audience :: researchers',      
         'Topic :: data science :: EEG analysis',
-        'License :: OSI Approved :: GNU General Public License v3.0'', # Your License Here  
+        'License :: OSI Approved :: GNU General Public License v3.0',  
         'Programming Language :: Python :: 3',  
         'Programming Language :: Python :: 3.4',
         ],
