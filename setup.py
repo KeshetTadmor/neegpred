@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(name='neegpred',
       packages = ['neegpred'],
-      version='0.2',
+      version='0.3',
       description='predicit liking and BDM results from EEG signals',
       url='https://github.com/KeshetTadmor/neegpred', 
       download_url = 'https://github.com/KeshetTadmor/neegpred/archive/refs/tags/0.1.tar.gz', #FILL IN LATER
