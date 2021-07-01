@@ -2,7 +2,7 @@
 ## introduction
 This module was aimed at a specific experiment run at Prof. Dino Levy's lab in Tel-Aviv University. As such, it expects to recieve a specific file format and will produce an EEG analysis based random forest model for predicting a subject's preference to given commercials and the effect of commercials on a subject's response to given items. 
 
-for brief overview of the data structure the Jupyter notebook "initial_exploratory_data_visualisation.ipynb" can be used.
+for brief overview of the data structure the Jupyter notebook "initial_data_visualisation.ipynb" can be used.
 
 ## input description 
 File Description: the module accepts ONLY .mat files that contain the specific fields specified below, it is designed to work with additional datasets only in the original format.
