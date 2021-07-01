@@ -1,7 +1,11 @@
 # Hackaton-2021-Adi-Nimrod-Keshet
+## introduction
+This module was aimed at a specific experiment run at Prof. Dino Levy's lab in Tel-Aviv University. As such, it expects to recieve a specific file format and will produce an EEG analysis based random forest model for predicting a subject's preference to given commercials and the effect of commercials on a subject's response to given items. 
 
 ## input description 
-File Description: the file “AllEEG.mat” contains all the data required to run algorithms and models, both behavioral and neural, from the dynamic WTP experiment (1.22GB). It can be opened only via MATLAB, as it is a “struct” type variable.
+File Description: the module accepts ONLY .mat files that contain the specific fields specified below, it is designed to work with additional datasets only in the original format.
+
+note: The .mat file can be imported into python by the "mat73" module, for closer inspection prior to this pipline use Matlab (The input is parsed throught the pipline and can be inspected closely there as well).
 
 **Primary Fields:**
 •	*SubID*: the identifier of the subject whose data is in the same row.
@@ -30,8 +34,9 @@ AllEEG(<index>).AdEEG: In this field you will find another struct variable neste
 9.	*nArtifacts*: the number of faulty electrodes found in the trial, by an automatic artifact detection pipeline. 
  
 ## models description
-the neegpdr packedge ofers two models of analysis:
-  1. **Liking Model**: this model predicts the liking score a subject will give a certain commercial based on EEG activity
-  2. **Diff Model**: this model predicts how will watching a commercial effect a subject's affinity towards an item based on EEG recordings
+neegpdr offers two modes of analysis via two different models:
+  1. **Liking Model**: this model predicts whether or not a subject will like a certain commercial based on EEG recording.
+  2. **Diff Model**: this model predicts how will watching a commercial effect the amount a subject is willing to pay for a specific item.
+ 
 ## experimental procedure
   ![Picture1](https://user-images.githubusercontent.com/80317440/124106824-480c7b00-da6d-11eb-832d-0b56e25033b1.png)
