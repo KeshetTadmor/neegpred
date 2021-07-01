@@ -17,3 +17,6 @@ from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.model_selection import GridSearchCV
 import pytest
 import pathlib
+from classes_and_functions import *
+from cleanup_func import *
+from tests import *
