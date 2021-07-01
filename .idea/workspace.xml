@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7457b6f-a21a-4448-ba8c-e257c62e9fb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/dist/neegpred-0.3.tar.gz" beforeDir="false" afterPath="$PROJECT_DIR$/dist/neegpred-0.3.tar.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neegpred/classes_and_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/neegpred/classes_and_functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +42,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -58,6 +59,7 @@
       <workItem from="1625137838794" duration="17092000" />
       <workItem from="1625159524209" duration="69000" />
       <workItem from="1625159792077" duration="979000" />
+      <workItem from="1625162441775" duration="1425000" />
     </task>
     <servers />
   </component>

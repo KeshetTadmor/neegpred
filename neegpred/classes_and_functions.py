@@ -161,7 +161,7 @@ class MatlabDataImporter:
               'continue with the analysis and enrichment of the EEG with the "enrich_eeg_data" function')
 
 
-### EEG Feature Extraction ###
+# EEG Feature Extraction
 
 def mean_half_diff(sample):
     """
@@ -180,6 +180,7 @@ def mean_half_diff(sample):
     h1 = np.mean(sample[0:len(sample)//2])
     h2 = np.mean(sample[len(sample)//2:])
     return h2-h1
+
 
 def mean_com_diff(sample, com_start_t=1000):
     """
@@ -205,7 +206,8 @@ def mean_com_diff(sample, com_start_t=1000):
 
 def mean_quart(sample):
     """
-        Splits the sample into quartiles and returns the means and differences between the means of each pair of quartiles
+        Splits the sample into quartiles and returns the means and differences
+        between the means of each pair of quartiles
 
         Parameters
         ----------
@@ -245,6 +247,7 @@ def mean_quart(sample):
     #  ['diff_q1_q2', 'diff_q1_q3', 'diff_q1_q4', 'diff_q2_q3', 'diff_q2_q4', 'diff_q3_q4']
     return mean_list[:], diff_list[:]
 
+
 def std_half_diff(sample):
     """
         Splits the sample into two halves and returns the difference between the standard deviation of the two halves
@@ -265,9 +268,11 @@ def std_half_diff(sample):
     h2 = np.std(sample[len(sample)//2:])
     return h2-h1
 
+
 def std_com_diff(sample, com_start_t=1000):
     """
-    Splits the sample to before and during the commercial and returns the difference between the standard deviation of the two halves
+    Splits the sample to before and during the commercial and returns the difference
+    between the standard deviation of the two halves
 
     Parameters
     ----------
@@ -286,6 +291,7 @@ def std_com_diff(sample, com_start_t=1000):
     h2 = np.std(sample[com_start_t+1:])
     return h2-h1
 
+
 def min_com_diff(sample):
     """
         Calculate the difference between the minimum value of the sample before the commercial and during the commercial
@@ -296,8 +302,6 @@ def min_com_diff(sample):
             sample is a list representing a time series with (length in seconds) * (500hz sample-rate)
             amplitude data points
 
-        com_start_t: time of commercial start (in samples)
-
         Returns
         ----------
          com_diff : float
@@ -306,6 +310,7 @@ def min_com_diff(sample):
     h1 = np.min(sample[0:1000])
     h2 = np.min(sample[1001:])
     return h2-h1
+
 
 def max_com_diff(sample, com_start_t=1000):
     """
@@ -327,6 +332,7 @@ def max_com_diff(sample, com_start_t=1000):
     h1 = np.max(sample[0:com_start_t])
     h2 = np.max(sample[com_start_t+1:])
     return h2-h1
+
 
 def fft_feature(sample):
     """
@@ -399,8 +405,11 @@ def get_frequncy_indices(freqs, bottom_frequncy, top_frequncy):
     freqs : list, float
        list of frequencies extracted from a real fast Fourier Transform (np.rfft)
 
-    bottom_frequency, top_frequency : float
-        the bottom and top frequency of the frequency band of interest
+    bottom_frequncy : float
+        the bottom frequency of the frequency band of interest
+
+    top_frequncy : float
+        the top frequency of the frequency band of interest
 
     Returns
     ----------
@@ -434,7 +443,7 @@ def create_eeg_feature_columns(df):
     df_with_features: pandas DataFrame
         an extended DataFrame with columns corresponding to features for the extraction process
     """
-    FEATURE_LIST = [
+    feature_list = [
         'mean_half_diff', 'mean_com_diff', 'mean_q1', 'mean_q2', 'mean_q3', 'mean_q4',
         'diff_q1_q2', 'diff_q1_q3', 'diff_q1_q4', 'diff_q2_q3', 'diff_q2_q4',
         'diff_q3_q4', 'std_com_diff', 'min_com_diff', 'max_com_diff', 'kurtosis',
@@ -443,7 +452,7 @@ def create_eeg_feature_columns(df):
         'fft_delta_std', 'fft_theta', 'fft_theta_max', 'fft_theta_std', 'fft_hf', 'fft_hf_max', 'fft_hf_std'
     ]
     enumerated_feature_list = []
-    for i in FEATURE_LIST:
+    for i in feature_list:
         for j in range(8):
             enumerated_feature_list.append(i + '_' + str(j))
     enumerated_feature_list.append('correlate_0_4')
@@ -565,7 +574,8 @@ def enrich_eeg_data(df):
           'for a model which predicts whether or not a commercial is effective use "build_diff_based_model"')
     return df
 
-def build_diff_based_model(ad_df,bdm_df, corr_plots=False):
+
+def build_diff_based_model(ad_df, bdm_df, corr_plots=False):
     """
     This function takes a parsed, enriched ad experiment DaraFrame and combines it with the BDM session data to create 
     a difference between product scores metric which is the target for classification - we want to try and predict the 
@@ -577,6 +587,8 @@ def build_diff_based_model(ad_df,bdm_df, corr_plots=False):
         The advetisment database after cleaning and enhanching
     bdm_df : pandas DataFrame
         The BDM database after cleaning
+    corr_plots : Binary
+        should the function print a correlation matrix? defaults to False
 
     Returns
     ----------
@@ -602,8 +614,8 @@ def build_diff_based_model(ad_df,bdm_df, corr_plots=False):
 
     """
     # insert 'pre_label' & 'label_diff' columns to ad_df
-    ad_df.insert(ad_df.shape[1], column=('pre_label'), value=np.float32(0))
-    ad_df.insert(ad_df.shape[1], column=('label_diff'), value=np.float32(0))
+    ad_df.insert(ad_df.shape[1], column='pre_label', value=np.float32(0))
+    ad_df.insert(ad_df.shape[1], column='label_diff', value=np.float32(0))
 
     # sort bdm_df by item
     bdm_sorted = bdm_df.sort_values(by='item', inplace=False)
@@ -634,7 +646,7 @@ def build_diff_based_model(ad_df,bdm_df, corr_plots=False):
     df.at[df.query('label_diff > 0').index, 'binary_diff'] = 1
     df.at[df.query('label_diff <= 0').index, 'binary_diff'] = 0
 
-    ### Split Test & Train Sets ###
+    # Split Test & Train Sets
     y = df.loc[:, 'binary_diff'].copy()
     X = df.drop(columns=(['sub_id',
                           'eeg',
@@ -655,7 +667,7 @@ def build_diff_based_model(ad_df,bdm_df, corr_plots=False):
     # plot the correlation matrix
     if corr_plots:
         corr_mat = X_numerical.corr()
-        fig, ax = plt.subplots(figsize=(20, 20))
+        _, ax = plt.subplots(figsize=(20, 20))
         plt.suptitle("Correlation Matrix")
         _ = sns.heatmap(corr_mat, annot=False, cmap='mako')
     features = X_dummy.columns
@@ -663,13 +675,10 @@ def build_diff_based_model(ad_df,bdm_df, corr_plots=False):
     # Test / Train Split
     X_train, X_test, y_train, y_test = train_test_split(X_dummy, y, test_size=0.33)
     train_ind = X_train.index
-    test_ind = y_test.index
 
     # Scale data before training
     scaler = StandardScaler()
     scaler.fit(X_train)
-    X_train_og = X_train.copy()
-    X_test_og = X_test.copy()
     X_train = scaler.transform(X_train)
     X_test = scaler.transform(X_test)
 
@@ -698,14 +707,14 @@ def build_diff_based_model(ad_df,bdm_df, corr_plots=False):
 def build_liking_based_model(df, liking_thr_low=2, liking_thr_high=5, corr_plots=False):
 
     """
-    This function takes a parsed, enriched DataFrame and build a random forest classification model that predicts whether
-    or not a trial resulted in "loving it" (liking > 5) or not (liking < 2)
+    This function takes a parsed, enriched DataFrame and build a random forest classification model
+    that predicts whether or not a trial resulted in "loving it" (liking > 5) or not (liking < 2)
     Note: The thrsholds can be moved to accommodate different liking distributions
 
     Parameters
     ----------
 
-    data : pandas DataFrame
+    df : pandas DataFrame
        A cleaned up, feature enriched DataFrame containing all of the features from the .mat file and all features
        extracted from the EEG signals
     liking_thr_low : float
@@ -745,7 +754,7 @@ def build_liking_based_model(df, liking_thr_low=2, liking_thr_high=5, corr_plots
         df.at[df.query('liking < @liking_thr_low').index, 'loving_it'] = 1
         df = df.query('loving_it != 0')
 
-    ### Split Test & Train Sets ###
+    # Split Test & Train Sets
     y = df.loc[:, 'loving_it'].copy()
     X = df.drop(columns=(['sub_id',
                           'eeg',
@@ -766,20 +775,17 @@ def build_liking_based_model(df, liking_thr_low=2, liking_thr_high=5, corr_plots
     # plot the correlation matrix
     if corr_plots:
         corr_mat = X_numerical.corr()
-        fig, ax = plt.subplots(figsize=(20, 20))
+        _, ax = plt.subplots(figsize=(20, 20))
         plt.suptitle("Correlation Matrix")
         _ = sns.heatmap(corr_mat, annot=False, cmap='mako')
 
     # Test / Train Split
     X_train, X_test, y_train, y_test = train_test_split(X_dummy, y, test_size=0.33)
     train_ind = X_train.index
-    test_ind = y_test.index
 
     # Scale data before training
     scaler = StandardScaler()
     scaler.fit(X_train)
-    X_train_og = X_train.copy()
-    X_test_og = X_test.copy()
     X_train = scaler.transform(X_train)
     X_test = scaler.transform(X_test)
 
@@ -825,6 +831,7 @@ def plot_ROC(model, name, X_test, y_test):
     auc_score = metrics.roc_auc_score(y_test, model.predict_proba(X_test)[:, 1])
     print(f'{name} ROC-AUC Score: {auc_score:.3f}')
     _ = plt.title(f'{name} ROC curve')
+
 
 def plot_confusion_matrix(model, name, X_test, y_test):
     """
@@ -877,11 +884,9 @@ def plot_feature_importance(model, features, name, num_features):
     importance_df = pd.DataFrame({"Feature": features, "Feature importance": feature_importance})
     importance_df = importance_df.sort_values(by="Feature importance", ascending=False)
     importance_df = importance_df.reset_index(drop=True)
-    fig = plt.figure(figsize=(8, 7))
+    _ = plt.figure(figsize=(8, 7))
     _ = plt.barh(importance_df.loc[num_features:0:-1, 'Feature'],
                  importance_df.loc[num_features:0:-1, 'Feature importance'])
     _ = plt.xlabel('Feature Importance')
     _ = plt.title(f'{name} Top {num_features} Features by Importance')
     _ = plt.yticks(fontsize=10)
-
-
