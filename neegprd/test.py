@@ -41,7 +41,7 @@ def test_liking_dis(df, l_tresh=2, h_tresh=5):
         data frame containing data from eeg experiment devided by trail.
     l_tresh : float
         the threshold defined as "does not like"
-    H_tresh : float
+    h_tresh : float
         the threshold defined as "like"
 
     """
