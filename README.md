@@ -28,6 +28,10 @@ AllEEG(<index>).AdEEG: In this field you will find another struct variable neste
 7.	*Label*: The value given to the product on that trial, from 0 to 100.
 8.	*Liking*: The value given to the commercial that appeared on that trial, from 0 to 7.
 9.	*nArtifacts*: the number of faulty electrodes found in the trial, by an automatic artifact detection pipeline. 
-  
+ 
+## models description
+the neegpdr packedge ofers two models of analysis:
+  1. **Liking Model**: this model predicts the liking score a subject will give a certain commercial based on EEG activity
+  2. **Diff Model**: this model predicts how will watching a commercial effect a subject's affinity towards an item based on EEG recordings
 ## experimental procedure
   ![Picture1](https://user-images.githubusercontent.com/80317440/124106824-480c7b00-da6d-11eb-832d-0b56e25033b1.png)
